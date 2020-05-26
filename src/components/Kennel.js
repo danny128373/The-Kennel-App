@@ -1,21 +1,15 @@
 import React from "react";
 import AnimalCard from "./animal/AnimalCard";
 import "./Kennel.css";
+import LocationCard from "./LocationCard";
+import OwnerCard from "./OwnerCard";
 
 const Kennel = () => {
   return (
     <div>
       <div>
-        <h2>
-          Student Kennels
-          <br />
-          <small>Loving care when you're not there.</small>
-        </h2>
-        <address>
-          Visit Us at the Nashville North Location
-          <br />
-          500 Puppy Way
-        </address>
+        <OwnerCard />
+        <LocationCard />
       </div>
       <div>
         <AnimalCard />
