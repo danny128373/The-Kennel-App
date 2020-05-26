@@ -11,7 +11,7 @@ const Kennel = () => {
         <OwnerCard />
         <LocationCard />
       </div>
-      <div>
+      <div className="container-cards">
         <AnimalCard />
         <AnimalCard />
         <AnimalCard />
