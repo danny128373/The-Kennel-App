@@ -1,5 +1,6 @@
-import { Route } from "react-router-dom";
 import React from "react";
+import { Route } from 'react-router-dom';
+
 import Home from "./home/Home";
 import AnimalCard from "./animal/AnimalCard";
 import LocationCard from "./location/LocationCard";

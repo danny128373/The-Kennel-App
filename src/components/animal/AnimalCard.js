@@ -1,5 +1,5 @@
 import React from "react";
-import "../Kennel.css"
+// import "../Kennel.css"
 
 const AnimalCard = () => {
   return (
