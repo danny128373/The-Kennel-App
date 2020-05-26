@@ -1,5 +1,6 @@
-import { BrowserRouter as Router } from 'react-router-dom';
 import React from "react";
+import { Route } from 'react-router-dom';
+
 import Home from "./home/Home";
 import AnimalCard from "./animal/AnimalCard";
 import LocationCard from "./location/LocationCard";
@@ -9,32 +10,32 @@ import OwnerCard from "./owner/OwnerCard";
 const ApplicationViews = () => {
   return (
     <>
-      <Router
+      <Route
         exact
         path="/"
         render={props => {
           return <Home />;
         }}
       />
-      <Router
+      <Route
         path="/animals"
         render={props => {
           return <AnimalCard />;
         }}
       />
-      <Router
+      <Route
         path="/locations"
         render={props => {
           return <LocationCard />;
         }}
       />
-      <Router
+      <Route
         path="/employees"
         render={props => {
           return <EmployeeCard />;
         }}
       />
-      <Router
+      <Route
         path="/owners"
         render={props => {
           return <OwnerCard />;
