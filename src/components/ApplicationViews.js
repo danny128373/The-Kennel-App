@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 import React from "react";
 import Home from "./home/Home";
 import AnimalCard from "./animal/AnimalCard";
@@ -9,32 +9,32 @@ import OwnerCard from "./owner/OwnerCard";
 const ApplicationViews = () => {
   return (
     <>
-      <Route
+      <Router
         exact
         path="/"
         render={props => {
           return <Home />;
         }}
       />
-      <Route
+      <Router
         path="/animals"
         render={props => {
           return <AnimalCard />;
         }}
       />
-      <Route
+      <Router
         path="/locations"
         render={props => {
           return <LocationCard />;
         }}
       />
-      <Route
+      <Router
         path="/employees"
         render={props => {
           return <EmployeeCard />;
         }}
       />
-      <Route
+      <Router
         path="/owners"
         render={props => {
           return <OwnerCard />;
