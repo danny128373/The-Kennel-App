@@ -3,9 +3,7 @@ import React from "react";
 const Home = () => {
   return (
     <address>
-      Visit Us at the Nashville North Location
-      <br />
-      500 Puppy Way
+      There's no place like home.
     </address>
   );
 };

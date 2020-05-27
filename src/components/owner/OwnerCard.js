@@ -1,11 +1,13 @@
 import React from 'react'
 
-export default function OwnerCard() {
+const OwnerCard = (props) => {
   return (
     <h2>
-      Student Kennels
+      {props.owner.name}
       <br />
-      <small>Loving care when you're not there.</small>
+      <small>{props.owner.phone}</small>
     </h2>
   )
 }
+
+export default OwnerCard

@@ -1,11 +1,9 @@
 import React from 'react'
 
-export default function LocationCard() {
+export default function LocationCard(props) {
   return (
     <address>
-      Visit Us at the Nashville North Location
-      <br />
-          500 Puppy Way
+      {props.location.address}
     </address>
   )
 }
