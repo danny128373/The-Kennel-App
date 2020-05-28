@@ -9,6 +9,7 @@ import OwnerList from "./owner/OwnerList";
 import AnimalDetail from "./animal/AnimalDetail";
 import LocationDetail from "./location/LocationDetail";
 import AnimalForm from './animal/AnimalForm'
+import LocationForm from './location/LocationForm'
 
 const ApplicationViews = () => {
   return (
@@ -20,9 +21,12 @@ const ApplicationViews = () => {
           return <Home />;
         }}
       />
-      <Route exact path="/animals" render={(props) => {
-        return <AnimalList {...props} />
-      }}
+      <Route
+        exact
+        path="/animals"
+        render={(props) => {
+          return <AnimalList {...props} />
+        }}
       />
       <Route
         path="/animals/:animalId(\d+)"
@@ -46,7 +50,7 @@ const ApplicationViews = () => {
         exact
         path="/locations"
         render={(props) => {
-          return <LocationList />
+          return <LocationList {...props} />
         }}
       />
       <Route
@@ -57,6 +61,12 @@ const ApplicationViews = () => {
             {...props}
           />
           );
+        }}
+      />
+      <Route
+        path="/locations/new"
+        render={(props) => {
+          return <LocationForm {...props} />
         }}
       />
       <Route
