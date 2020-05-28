@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from "react-router-dom";
 
 import Home from "./home/Home";
 import AnimalList from "./animal/AnimalList";
@@ -12,10 +12,17 @@ import AnimalForm from './animal/AnimalForm'
 import LocationForm from './location/LocationForm'
 import EmployeeForm from './employee/EmployeeForm'
 import OwnerForm from './owner/OwnerForm'
+import Login from "./auth/Login";
 
 const ApplicationViews = () => {
+  // Check if credentials are in session storage returns true/false
+  const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   return (
     <>
+      <Route path="/login"
+        component={Login}
+      />
       <Route
         exact
         path="/"
@@ -26,10 +33,13 @@ const ApplicationViews = () => {
       <Route
         exact
         path="/animals"
-        render={(props) => {
-          return <AnimalList {...props} />
-        }}
-      />
+        render={props => {
+          if (isAuthenticated()) {
+            return <AnimalList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
       <Route
         path="/animals/:animalId(\d+)"
         render={props => {
@@ -48,13 +58,13 @@ const ApplicationViews = () => {
             {...props}
           />
         }} />
-      <Route
-        exact
-        path="/locations"
-        render={(props) => {
-          return <LocationList {...props} />;
-        }}
-      />
+      <Route exact path="/locations" render={props => {
+        if (isAuthenticated()) {
+          return <LocationList {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
       <Route
         path="/locations/:locationId(\d+)"
         render={props => {
@@ -71,26 +81,26 @@ const ApplicationViews = () => {
           return <LocationForm {...props} />
         }}
       />
-      <Route
-        exact
-        path="/employees"
-        render={(props) => {
-          return <EmployeeList {...props} />;
-        }}
-      />
+      <Route exact path="/employees" render={props => {
+        if (isAuthenticated()) {
+          return <EmployeeList {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
       <Route
         path="/employees/new"
         render={(props) => {
           return <EmployeeForm {...props} />
         }}
       />
-      <Route
-        exact
-        path="/owners"
-        render={props => {
-          return <OwnerList {...props} />;
-        }}
-      />
+      <Route exact path="/owners" render={props => {
+        if (isAuthenticated()) {
+          return <OwnerList {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
       <Route
         path="/owners/new"
         render={(props) => {
