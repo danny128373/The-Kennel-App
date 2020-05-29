@@ -27,6 +27,7 @@ const AnimalDetail = props => {
     );
   };
 
+  console.log(props)
   return (
     <div className="card">
       <div className="card-content">
@@ -37,6 +38,10 @@ const AnimalDetail = props => {
           Name: <span style={{ color: "darkslategrey" }}>{firstLetterCase(animal.name)}</span>
         </h3>
         <p>Breed: {animal.breed}</p>
+        <button type="button"
+          onClick={() => props.history.push(`/animals/${props.animalId}/edit`)}>
+          Edit
+        </button>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Discharge
         </button>
