@@ -3,7 +3,7 @@ import LocationManager from '../../modules/LocationManager';
 import './LocationForm.css'
 
 const LocationForm = props => {
-  const [location, setLocation] = useState({ address: "" });
+  const [location, setLocation] = useState({ name: "", address: "" });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -16,8 +16,8 @@ const LocationForm = props => {
   */
   const constructNewLocation = evt => {
     evt.preventDefault();
-    if (location.address === "") {
-      window.alert("Please input location address");
+    if (location.address === "" || location.name === "") {
+      window.alert("Please enter name and address of location");
     } else {
       setIsLoading(true);
       // Create the animal and redirect user to animal list
@@ -30,6 +30,16 @@ const LocationForm = props => {
     <>
       <form>
         <fieldset>
+          <div className="formgrid">
+            <input
+              type="text"
+              required
+              onChange={handleFieldChange}
+              id="name"
+              placeholder="Enter Name"
+            />
+            <label htmlFor="name">Address</label>
+          </div>
           <div className="formgrid">
             <input
               type="text"
