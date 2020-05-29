@@ -17,6 +17,8 @@ import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationEditForm from "./location/LocationEditForm";
 import OwnerEditForm from "./owner/OwnerEditForm";
 import OwnerCard from "./owner/OwnerCard"
+import EmployeeCard from "./employee/EmployeeCard"
+import EmployeeEditForm from './employee/EmployeeEditForm'
 
 const ApplicationViews = () => {
   // Check if credentials are in session storage returns true/false
@@ -103,6 +105,20 @@ const ApplicationViews = () => {
           return <EmployeeForm {...props} />
         }}
       />
+      <Route path="/employees/:employeeId(\d+)/edit" render={props => {
+        if (isAuthenticated()) {
+          return <EmployeeEditForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
+      <Route exact path="/employees/:employeeId(\d+)" render={props => {
+        if (isAuthenticated()) {
+          return <EmployeeCard employeeId={parseInt(props.match.params.employeeId)} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
       <Route exact path="/owners" render={props => {
         if (isAuthenticated()) {
           return <OwnerList {...props} />
