@@ -4,17 +4,15 @@ import './Owner.css'
 const OwnerCard = (props) => {
   return (
     <div className="card">
-      <h2 className="card-content">
+      <h3 className="card-content">
         {props.owner.name}
-        <br />
-        <small>{props.owner.phone}</small>
-        <br />
-        <button type="button"
-          onClick={() => props.history.push(`/owners/${props.owner.id}/edit`)}>
-          Edit
+      </h3>
+      <p>{props.owner.phone}</p>
+      <button type="button"
+        onClick={() => props.history.push(`/owners/${props.owner.id}/edit`)}>
+        Edit
       </button>
-        <button type="button" onClick={() => props.deleteOwner(props.owner.id)}>Ban this customer!</button>
-      </h2>
+      <button type="button" onClick={() => props.deleteOwner(props.owner.id)}>Ban this customer!</button>
     </div>
 
   )
