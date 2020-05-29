@@ -31,6 +31,10 @@ const LocationDetail = props => {
         <h3>Name: <span style={{ color: 'darkslategrey' }}>{location.name}</span></h3>
         <h3>Address: <span style={{ color: 'darkslategrey' }}>{location.address}</span></h3>
       </div>
+      <button type="button"
+        onClick={() => props.history.push(`/locations/${props.locationId}/edit`)}>
+        Edit
+        </button>
       <button type="button" disabled={isLoading} onClick={handleDelete}>
         Discharge
         </button>
