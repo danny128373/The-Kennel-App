@@ -98,7 +98,6 @@ const ApplicationViews = () => {
           return <Redirect to="/login" />
         }
       }} />
-
       <Route
         path="/employees/new"
         render={(props) => {
