@@ -1,31 +1,16 @@
 {
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles",
-      "breed": "Poodle"
-    },
-    {
-      "id": 3,
-      "name": "Esme",
-      "breed": "Pitbull"
-    },
-    {
-      "name": "Spot",
-      "breed": "Beagle",
-      "id": 4
-    },
-    {
-      "name": "Shelby",
-      "breed": "German Shepard",
-      "employeeId": "4",
-      "id": 6
-    },
-    {
       "name": "Lucy",
       "breed": "Papillon",
       "employeeId": 1,
       "id": 7
+    },
+    {
+      "name": "Shelbyd",
+      "breed": "mix",
+      "employeeId": 1,
+      "id": 8
     }
   ],
   "employees": [
