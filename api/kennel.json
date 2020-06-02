@@ -6,49 +6,72 @@
       "breed": "Poodle"
     },
     {
-      "id": 2,
-      "name": "Decker",
-      "breed": "German Shepherd"
-    },
-    {
       "id": 3,
       "name": "Esme",
       "breed": "Pitbull"
+    },
+    {
+      "name": "Spot",
+      "breed": "Beagle",
+      "id": 4
+    },
+    {
+      "name": "Shelby",
+      "breed": "German Shepard",
+      "employeeId": "4",
+      "id": 6
+    },
+    {
+      "name": "Lucy",
+      "breed": "Papillon",
+      "employeeId": 1,
+      "id": 7
     }
   ],
   "employees": [
     {
       "id": 1,
-      "name": "Abby"
+      "name": "Michael",
+      "position": "Regional Manager"
     },
     {
       "id": 2,
-      "name": "Brandy"
+      "name": "Jim",
+      "position": "Sales Associate"
     },
     {
       "id": 3,
-      "name": "Cameron"
+      "name": "Dwight",
+      "position": "Assistant to the Regional Manager"
+    },
+    {
+      "name": "Pam",
+      "position": "Secretary",
+      "id": 4
     }
   ],
   "locations": [
     {
       "id": 1,
-      "address": "111 Main St"
+      "name": "North Kennel",
+      "address": "111 Psycho Path"
     },
     {
-      "id": 2,
-      "address": "222 Main St"
+      "id": 4,
+      "name": "East Kennel",
+      "address": "123 Old Trash Pile Rd."
     },
     {
-      "id": 3,
-      "address": "333 Main St"
+      "id": 5,
+      "name": "South Kennel",
+      "address": "321 This Ain't It Rd."
     }
   ],
   "owners": [
     {
       "id": 1,
       "name": "Daniel",
-      "phone": "615-111-1111"
+      "phone": "615-777-7777"
     },
     {
       "id": 2,

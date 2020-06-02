@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimalManager from '../../modules/AnimalManager';
 import './AnimalForm.css'
+import EmployeeManager from '../../modules/EmployeeManager'
 
 const AnimalForm = props => {
-  const [animal, setAnimal] = useState({ name: "", breed: "" });
+  const [animal, setAnimal] = useState({ name: "", breed: "", employeeId: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [employees, setEmployees] = useState([]);
 
-  const handleFieldChange = evt => {
-    const stateToChange = { ...animal };
-    stateToChange[evt.target.id] = evt.target.value;
+  const handleFieldChange = event => {
+    const stateToChange = { ...animal }
+    stateToChange[event.target.id] = event.target.value
+    if (parseInt(stateToChange[event.target.id]) > 1000000) {
+      stateToChange[event.target.id] = parseInt(stateToChange[event.target.id]);
+    } else {
+      stateToChange[event.target.id] = event.target.value;
+    }
     setAnimal(stateToChange);
   };
 
-  /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
-  */
+  const getEmployees = () => {
+    return EmployeeManager.getAll().then(employees => {
+      setEmployees(employees)
+    })
+  }
+
+  useEffect(() => {
+    getEmployees();
+  }, []);
+
   const constructNewAnimal = evt => {
     evt.preventDefault();
-    if (animal.name === "" || animal.breed === "") {
-      window.alert("Please input an animal name and breed");
+    if (animal.name === "" || animal.breed === "" || animal.employeeId === "") {
+      window.alert("Please input an animal name, breed, and caretaker");
     } else {
       setIsLoading(true);
       // Create the animal and redirect user to animal list
       AnimalManager.post(animal)
         .then(() => props.history.push("/animals"));
     }
-  };
+  }
 
   return (
     <>
@@ -47,14 +62,18 @@ const AnimalForm = props => {
               placeholder="Breed"
             />
             <label htmlFor="breed">Breed</label>
+            <label htmlFor="employeeId">Caretaker:</label>
+            <select id="employeeId" onChange={handleFieldChange} required>
+              <option>Please select a caretaker</option>
+              {employees.map(employee => <option key={employee.id} value={employee.id}>{employee.name}</option>)}
+            </select>
           </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={constructNewAnimal}
-            >Submit</button>
-          </div>
+          <br />
+          <button
+            type="button"
+            disabled={isLoading}
+            onClick={constructNewAnimal}
+          >Submit</button>
         </fieldset>
       </form>
     </>
