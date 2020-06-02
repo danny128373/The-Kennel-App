@@ -11,7 +11,7 @@ const AnimalForm = props => {
   const handleFieldChange = event => {
     const stateToChange = { ...animal }
     stateToChange[event.target.id] = event.target.value
-    if (parseInt(stateToChange[event.target.id]) > 1000000) {
+    if (parseInt(stateToChange[event.target.id]) < parseInt(stateToChange[event.target.id]) + 1) {
       stateToChange[event.target.id] = parseInt(stateToChange[event.target.id]);
     } else {
       stateToChange[event.target.id] = event.target.value;

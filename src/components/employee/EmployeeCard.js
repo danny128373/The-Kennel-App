@@ -9,6 +9,8 @@ export default function EmployeeCard(props) {
         <p>{props.employee.position}</p>
         <br />
         <button type="button"
+          onClick={() => { props.history.push(`/employees/${props.employee.id}/details`) }}>Details</button>
+        <button type="button"
           onClick={() => props.history.push(`/employees/${props.employee.id}/edit`)}>
           Edit
       </button>
