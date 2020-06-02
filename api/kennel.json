@@ -4,13 +4,13 @@
       "name": "Lucy",
       "breed": "Papillon",
       "employeeId": 1,
-      "id": 7
+      "id": 10
     },
     {
-      "name": "Shelbyd",
-      "breed": "mix",
+      "name": "Lucy",
+      "breed": "Papillon",
       "employeeId": 1,
-      "id": 8
+      "id": 11
     }
   ],
   "employees": [
