@@ -12,11 +12,14 @@ export default function LocationCard(props) {
         <Link to={`/locations/${props.location.id}`}>
           <button>Details</button>
         </Link>
-        <button type="button"
-          onClick={() => props.history.push(`/locations/${props.location.id}/edit`)}>
-          Edit
-      </button>
-        <button type="button" onClick={() => props.deleteLocation(props.location.id)}>Dust this place!</button>
+        {
+
+          sessionStorage.getItem("credentials") != null && <button type="button" onClick={() => props.deleteLocation(props.location.id)}>Dust this place!</button>
+          && <button type="button"
+            onClick={() => props.history.push(`/locations/${props.location.id}/edit`)}>
+            Edit
+            </button>
+        }
       </div>
     </address>
   )

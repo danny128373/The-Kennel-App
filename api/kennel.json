@@ -7,10 +7,9 @@
       "id": 10
     },
     {
-      "name": "Lucy",
-      "breed": "Papillon",
-      "employeeId": 1,
-      "id": 11
+      "id": 11,
+      "name": "Shelby",
+      "breed": "Mix"
     }
   ],
   "employees": [
@@ -42,14 +41,9 @@
       "address": "111 Psycho Path"
     },
     {
-      "id": 4,
       "name": "East Kennel",
-      "address": "123 Old Trash Pile Rd."
-    },
-    {
-      "id": 5,
-      "name": "South Kennel",
-      "address": "321 This Ain't It Rd."
+      "address": "123 This Ain't It Rd",
+      "id": 2
     }
   ],
   "owners": [

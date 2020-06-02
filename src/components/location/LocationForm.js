@@ -38,7 +38,7 @@ const LocationForm = props => {
               id="name"
               placeholder="Enter Name"
             />
-            <label htmlFor="name">Address</label>
+            <label htmlFor="name">Name</label>
           </div>
           <div className="formgrid">
             <input
