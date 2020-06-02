@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import EmployeeManager from '../../modules/EmployeeManager'
 import AnimalCard from '../animal/AnimalCard'
+import AnimalManager from '../../modules/AnimalManager'
 
 const EmployeeWithAnimals = props => {
   const [employee, setEmployee] = useState({});
