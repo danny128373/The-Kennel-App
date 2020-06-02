@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -11,11 +11,7 @@ const Login = props => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    /*
-        For now, just store the email and password that
-        the customer enters into session storage.
-        ...Let's just trust the user... That's a good idea, right????
-    */
+
     sessionStorage.setItem(
       "credentials",
       JSON.stringify(credentials)
@@ -24,7 +20,11 @@ const Login = props => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={(event) => {
+      event.preventDefault()
+      props.setHasUser()
+      props.history.push("/")
+    }}>
       <fieldset>
         <h3>Please sign in</h3>
         <div className="formgrid">
@@ -46,4 +46,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default Login
