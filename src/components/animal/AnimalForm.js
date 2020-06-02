@@ -8,10 +8,14 @@ const AnimalForm = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [employees, setEmployees] = useState([]);
 
-  const handleFieldChange = evt => {
-    const stateToChange = { ...animal };
-    stateToChange[evt.target.id] = evt.target.value;
-    console.log(stateToChange)
+  const handleFieldChange = event => {
+    const stateToChange = { ...animal }
+    stateToChange[event.target.id] = event.target.value
+    if (parseInt(stateToChange[event.target.id]) > 1000000) {
+      stateToChange[event.target.id] = parseInt(stateToChange[event.target.id]);
+    } else {
+      stateToChange[event.target.id] = event.target.value;
+    }
     setAnimal(stateToChange);
   };
 

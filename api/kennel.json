@@ -16,16 +16,16 @@
       "id": 4
     },
     {
-      "name": "Lucy",
-      "breed": "Papillon",
-      "employeeId": "1",
-      "id": 5
-    },
-    {
       "name": "Shelby",
       "breed": "German Shepard",
       "employeeId": "4",
       "id": 6
+    },
+    {
+      "name": "Lucy",
+      "breed": "Papillon",
+      "employeeId": 1,
+      "id": 7
     }
   ],
   "employees": [
