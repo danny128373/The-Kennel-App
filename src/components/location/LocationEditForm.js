@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import LocationManager from "../../modules/LocationManager"
+import ApiManager from "../../modules/ApiManager"
 import "./LocationForm.css"
 
 const LocationEditForm = props => {
@@ -23,12 +23,12 @@ const LocationEditForm = props => {
       address: location.address
     };
 
-    LocationManager.update(editedLocation)
+    ApiManager.update(editedLocation, 'locations')
       .then(() => props.history.push("/locations"))
   }
 
   useEffect(() => {
-    LocationManager.get(props.match.params.locationId)
+    ApiManager.get(props.match.params.locationId, 'locations')
       .then(location => {
         setLocation(location);
         setIsLoading(false);

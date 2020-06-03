@@ -1,7 +1,6 @@
 const remoteURL = "http://localhost:5002"
 
 export default {
-
   get(id, collection) {
     return fetch(`${remoteURL}/${collection}/${id}`).then(e => e.json())
   },
@@ -31,7 +30,6 @@ export default {
       body: JSON.stringify(editedAnimal)
     }).then(data => data.json());
   },
-  // Add this method to the AnimalManager object
   getRandomId(collection) {
     return fetch(`${remoteURL}/${collection}`)
       .then(result => result.json())
@@ -40,5 +38,9 @@ export default {
         const randomAnimal = animals[randomIndex];
         return randomAnimal.id;
       });
+  },
+  getWithAnimals(id) {
+    return fetch(`${remoteURL}/employees/${id}?_embed=animals`)
+      .then(result => result.json())
   }
 }

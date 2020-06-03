@@ -9,7 +9,7 @@ const AnimalDetail = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from AnimalManager and hang on to the data; put it into state
+    //get(id) from ApiManager and hang on to the data; put it into state
     ApiManager.get(props.animalId, 'animals').then(animal => {
       setAnimal({
         name: animal.name,
@@ -20,7 +20,7 @@ const AnimalDetail = props => {
   }, [props.animalId]);
 
   const handleDelete = () => {
-    //invoke the delete function in AnimalManger and re-direct to the animal list.
+    //invoke the delete function in ApiManager and re-direct to the animal list.
     setIsLoading(true);
     ApiManager.delete(props.animalId, 'animals').then(() =>
       props.history.push("/animals")

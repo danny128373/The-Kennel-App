@@ -16,6 +16,11 @@
       "breed": "mix",
       "employeeId": 1,
       "id": 13
+    },
+    {
+      "id": 14,
+      "name": "Chester",
+      "breed": "Corgi"
     }
   ],
   "employees": [
@@ -38,6 +43,11 @@
       "name": "Pam",
       "position": "Secretary",
       "id": 4
+    },
+    {
+      "name": "Oscar",
+      "position": "Accountant",
+      "id": 5
     }
   ],
   "locations": [

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LocationManager from '../../modules/LocationManager';
+import ApiManager from '../../modules/ApiManager';
 import './LocationForm.css'
 
 const LocationForm = props => {
@@ -12,7 +12,7 @@ const LocationForm = props => {
     setLocation(stateToChange);
   };
 
-  /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
+  /*  Local method for validation, set loadingStatus, create locations object, invoke the ApiManager post method, and redirect to the full location list
   */
   const constructNewLocation = evt => {
     evt.preventDefault();
@@ -20,8 +20,8 @@ const LocationForm = props => {
       window.alert("Please enter name and address of location");
     } else {
       setIsLoading(true);
-      // Create the animal and redirect user to animal list
-      LocationManager.post(location)
+      // Create the location and redirect user to location list
+      ApiManager.post(location, 'locations')
         .then(() => props.history.push("/locations"));
     }
   };

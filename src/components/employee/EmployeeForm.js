@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
+import ApiManager from '../../modules/ApiManager';
 import './EmployeeForm.css'
 
 const EmployeeForm = props => {
@@ -18,7 +18,7 @@ const EmployeeForm = props => {
       window.alert("Please input name and position");
     } else {
       setIsLoading(true);
-      EmployeeManager.post(employee)
+      ApiManager.post(employee, 'employees')
         .then(() => props.history.push("/employees"));
     }
   };

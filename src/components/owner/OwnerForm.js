@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import OwnerManager from '../../modules/OwnerManager';
+import ApiManager from '../../modules/ApiManager';
 import './OwnerForm.css'
 
 const OwnerForm = props => {
@@ -12,16 +12,14 @@ const OwnerForm = props => {
     setOwner(stateToChange);
   };
 
-  /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
-  */
   const constructNewOwner = evt => {
     evt.preventDefault();
     if (owner.name === "" || owner.breed === "") {
       window.alert("Please input an animal name and breed");
     } else {
       setIsLoading(true);
-      // Create the animal and redirect user to animal list
-      OwnerManager.post(owner)
+
+      ApiManager.post(owner, 'owners')
         .then(() => props.history.push("/owners"));
     }
   };
