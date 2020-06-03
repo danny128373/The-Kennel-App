@@ -4,7 +4,7 @@ import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 import "./Kennel.css";
 
-const Kennel = () => {
+const Kennel = (props) => {
 
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -20,9 +20,14 @@ const Kennel = () => {
     setHasUser(isAuthenticated())
   }
 
+  const clearUser = () => {
+    sessionStorage.clear();
+    setHasUser(isAuthenticated());
+  }
+
   return (
     <>
-      <NavBar hasUser={hasUser} />
+      <NavBar hasUser={hasUser} clearUser={clearUser} {...props} />
       <ApplicationViews hasUser={hasUser} setUser={setUser} />
     </>
   );
