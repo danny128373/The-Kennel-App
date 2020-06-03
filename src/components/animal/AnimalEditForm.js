@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react"
 import AnimalManager from "../../modules/AnimalManager"
 import "./AnimalForm.css"
+// importing EmployeeManager to get employees
+import EmployeeManager from "../../modules/EmployeeManager"
 
 const AnimalEditForm = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const [isLoading, setIsLoading] = useState(false);
+  // adding employees useState
+  const [employees, setEmployees] = useState([]);
 
   const handleFieldChange = evt => {
     const stateToChange = { ...animal };
     stateToChange[evt.target.id] = evt.target.value;
     setAnimal(stateToChange);
+  };
+
+  //added field change for employees
+  const handleFieldChangeEmployee = evt => {
+    const stateToChange = { ...employees };
+    stateToChange[evt.target.id] = evt.target.value;
+    setEmployees(stateToChange);
   };
 
   const updateExistingAnimal = evt => {
@@ -33,6 +44,17 @@ const AnimalEditForm = props => {
         setAnimal(animal);
         setIsLoading(false);
       });
+  }, []);
+
+  // fetching employees
+  const getEmployees = () => {
+    return EmployeeManager.getAll().then(employees => {
+      setEmployees(employees)
+    })
+  }
+  //useEffect for employees
+  useEffect(() => {
+    getEmployees();
   }, []);
 
   return (
@@ -59,7 +81,15 @@ const AnimalEditForm = props => {
               value={animal.breed}
             />
             <label htmlFor="breed">Breed</label>
+            {/* add select options of caretaker */}
+            <label htmlFor="employeeId">Caretaker</label>
+            <select className="form-control" id="employeeId" onChange={handleFieldChangeEmployee} required>
+              <option>Please select a caretaker</option>
+              {employees.map(employee => <option key={employee.id} id={employee.id}>{employee.name}</option>)}
+            </select>
+            {/* end of select options */}
           </div>
+
           <div className="alignRight">
             <button
               type="button" disabled={isLoading}

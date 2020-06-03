@@ -10,6 +10,18 @@
       "id": 11,
       "name": "Shelby",
       "breed": "Mix"
+    },
+    {
+      "name": "Esme",
+      "breed": "Pitbull",
+      "employeeId": 3,
+      "id": 12
+    },
+    {
+      "name": "Rio",
+      "breed": "mix",
+      "employeeId": 1,
+      "id": 13
     }
   ],
   "employees": [

@@ -61,11 +61,11 @@ const AnimalForm = props => {
               id="breed"
               placeholder="Breed"
             />
-            <label htmlFor="breed">Breed</label>
-            <label htmlFor="employeeId">Caretaker:</label>
-            <select id="employeeId" onChange={handleFieldChange} required>
+            <label className="alignRight" htmlFor="breed">Breed</label>
+            <select className="alignRight" id="employeeId" onChange={handleFieldChange} required>
               <option>Please select a caretaker</option>
               {employees.map(employee => <option key={employee.id} value={employee.id}>{employee.name}</option>)}
+              <label htmlFor="employeeId">Caretaker:</label>
             </select>
           </div>
           <br />
