@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { withRouter } from 'react-router-dom';
 
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -11,7 +12,6 @@ const Login = props => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     sessionStorage.setItem(
       "credentials",
       JSON.stringify(credentials)
