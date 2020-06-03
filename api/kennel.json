@@ -12,12 +12,6 @@
       "breed": "Mix"
     },
     {
-      "name": "Esme",
-      "breed": "Pitbull",
-      "employeeId": 3,
-      "id": 12
-    },
-    {
       "name": "Rio",
       "breed": "mix",
       "employeeId": 1,
