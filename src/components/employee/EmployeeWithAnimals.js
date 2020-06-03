@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import EmployeeManager from '../../modules/EmployeeManager'
+import ApiManager from '../../modules/ApiManager'
 import AnimalCard from '../animal/AnimalCard'
-import AnimalManager from '../../modules/AnimalManager'
 
 const EmployeeWithAnimals = props => {
   const [employee, setEmployee] = useState({});
@@ -9,7 +8,7 @@ const EmployeeWithAnimals = props => {
 
   useEffect(() => {
     //got here now make call to get employee with animal
-    EmployeeManager.getWithAnimals(props.match.params.employeeId)
+    ApiManager.getWithAnimals(props.match.params.employeeId)
       .then(APIResult => {
         setEmployee(APIResult);
         setAnimals(APIResult.animals);

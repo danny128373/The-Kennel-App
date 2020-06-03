@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import EmployeeCard from './EmployeeCard';
-import EmployeeManager from '../../modules/EmployeeManager';
+import ApiManager from '../../modules/ApiManager'
 
 const EmployeeList = (props) => {
   // The initial state is an empty array
@@ -10,14 +10,14 @@ const EmployeeList = (props) => {
   const getEmployees = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
-    return EmployeeManager.getAll().then(employeesFromAPI => {
+    return ApiManager.getAll('employees').then(employeesFromAPI => {
       setEmployees(employeesFromAPI)
     });
   };
 
   const deleteEmployee = id => {
-    EmployeeManager.delete(id)
-      .then(() => EmployeeManager.getAll().then(setEmployees));
+    ApiManager.delete(id, 'employees')
+      .then(() => ApiManager.getAll('employees').then(setEmployees));
   };
 
   // got the animals from the API on the component's first render

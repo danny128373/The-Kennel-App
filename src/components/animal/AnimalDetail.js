@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import AnimalManager from "../../modules/AnimalManager";
+import ApiManager from '../../modules/ApiManager'
 import "./AnimalDetail.css";
 import { firstLetterCase } from "../../modules/helpers"
 
@@ -9,8 +9,8 @@ const AnimalDetail = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from AnimalManager and hang on to the data; put it into state
-    AnimalManager.get(props.animalId).then(animal => {
+    //get(id) from ApiManager and hang on to the data; put it into state
+    ApiManager.get(props.animalId, 'animals').then(animal => {
       setAnimal({
         name: animal.name,
         breed: animal.breed
@@ -20,9 +20,9 @@ const AnimalDetail = props => {
   }, [props.animalId]);
 
   const handleDelete = () => {
-    //invoke the delete function in AnimalManger and re-direct to the animal list.
+    //invoke the delete function in ApiManager and re-direct to the animal list.
     setIsLoading(true);
-    AnimalManager.delete(props.animalId).then(() =>
+    ApiManager.delete(props.animalId, 'animals').then(() =>
       props.history.push("/animals")
     );
   };

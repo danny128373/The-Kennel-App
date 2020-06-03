@@ -10,15 +10,6 @@ const Login = props => {
     setCredentials(stateToChange);
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    sessionStorage.setItem(
-      "credentials",
-      JSON.stringify(credentials)
-    );
-    props.history.push("/");
-  }
-
   return (
     <form onSubmit={(event) => {
       event.preventDefault()

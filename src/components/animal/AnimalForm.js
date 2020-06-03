@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import AnimalManager from '../../modules/AnimalManager';
+import ApiManager from '../../modules/ApiManager';
 import './AnimalForm.css'
-import EmployeeManager from '../../modules/EmployeeManager'
 
 const AnimalForm = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "", employeeId: "" });
@@ -20,7 +19,7 @@ const AnimalForm = props => {
   };
 
   const getEmployees = () => {
-    return EmployeeManager.getAll().then(employees => {
+    return ApiManager.getAll('employees').then(employees => {
       setEmployees(employees)
     })
   }
@@ -36,7 +35,7 @@ const AnimalForm = props => {
     } else {
       setIsLoading(true);
       // Create the animal and redirect user to animal list
-      AnimalManager.post(animal)
+      ApiManager.post(animal, 'animals')
         .then(() => props.history.push("/animals"));
     }
   }
@@ -62,10 +61,10 @@ const AnimalForm = props => {
               placeholder="Breed"
             />
             <label className="alignRight" htmlFor="breed">Breed</label>
+            <label htmlFor="employeeId">Caretaker:</label>
             <select className="alignRight" id="employeeId" onChange={handleFieldChange} required>
               <option>Please select a caretaker</option>
               {employees.map(employee => <option key={employee.id} value={employee.id}>{employee.name}</option>)}
-              <label htmlFor="employeeId">Caretaker:</label>
             </select>
           </div>
           <br />

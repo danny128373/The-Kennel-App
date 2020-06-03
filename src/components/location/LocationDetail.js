@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import LocationManager from '../../modules/LocationManager';
+import ApiManager from '../../modules/ApiManager';
 import './LocationDetail.css'
 
 const LocationDetail = props => {
@@ -8,8 +8,8 @@ const LocationDetail = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from AnimalManager and hang on to the data; put it into state
-    LocationManager.get(props.locationId).then(location => {
+    //get(id) from ApiManager and hang on to the data; put it into state
+    ApiManager.get(props.locationId, 'locations').then(location => {
       setLocation({
         name: location.name,
         address: location.address
@@ -20,7 +20,7 @@ const LocationDetail = props => {
 
   const handleDelete = () => {
     setIsLoading(true);
-    LocationManager.delete(props.locationId).then(() =>
+    ApiManager.delete(props.locationId, 'locations').then(() =>
       props.history.push("/locations")
     );
   };

@@ -12,16 +12,15 @@
       "breed": "Mix"
     },
     {
-      "name": "Esme",
-      "breed": "Pitbull",
-      "employeeId": 3,
-      "id": 12
-    },
-    {
       "name": "Rio",
       "breed": "mix",
       "employeeId": 1,
       "id": 13
+    },
+    {
+      "id": 14,
+      "name": "Chester",
+      "breed": "Corgi"
     }
   ],
   "employees": [
@@ -44,6 +43,11 @@
       "name": "Pam",
       "position": "Secretary",
       "id": 4
+    },
+    {
+      "name": "Oscar",
+      "position": "Accountant",
+      "id": 5
     }
   ],
   "locations": [
