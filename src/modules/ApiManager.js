@@ -44,6 +44,19 @@ export default {
       .then(result => result.json())
   },
   searchAnimals(userInput) {
-    return fetch(`${remoteURL}/animals?q=${userInput}`)
+    return fetch(`${remoteURL}/animals?name_like=${userInput}`)
+      .then(e => e.json())
+  },
+  searchEmployees(userInput) {
+    return fetch(`${remoteURL}/employees?name_like=${userInput}`)
+      .then(e => e.json())
+  },
+  searchLocations(userInput) {
+    return fetch(`${remoteURL}/locations?name_like=${userInput}`)
+      .then(e => e.json())
+  },
+  searchOwners(userInput) {
+    return fetch(`${remoteURL}/owners?name_like=${userInput}`)
+      .then(e => e.json())
   }
 }

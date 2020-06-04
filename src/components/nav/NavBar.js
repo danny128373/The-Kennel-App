@@ -8,21 +8,49 @@ import ApiManager from '../../modules/ApiManager'
 const NavBar = (props) => {
 
   // added useState for search
-  const [search, setSearch] = useState([])
+  const [search, setSearch] = useState({ animals: [], employees: [], locations: [], owners: [] })
+  //added useState for input
   const [input, setInput] = useState({ input: "" })
 
   const handleSearch = (evt) => {
     const stateToChange = { ...search };
-    stateToChange[evt.target.id] = evt.target.value;
+    stateToChange.input = evt.target.value;
     setSearch(stateToChange);
   }
 
+  const handleInput = (evt) => {
+    console.log(evt.key)
+    const stateToChange = { ...search };
+    stateToChange.input = evt.key;
+    setInput(stateToChange);
+  }
+
+  // const findMatch = (key) => {
+
+  // }
+
+  //fetches from all collections using name_like=input
   const callsAllAPI = () => {
-    ApiManager.searchAnimals(input)
+    let stateToChange = { ...search }
+    ApiManager.searchAnimals(input.input).then(animals => {
+      stateToChange.animals = animals
+    })
+      .then(ApiManager.searchEmployees(input.input).then(employees => {
+        stateToChange.employees = employees
+      }))
+      .then(ApiManager.searchLocations(input.input).then(locations => {
+        stateToChange.locations = locations
+      }))
+      .then(ApiManager.searchOwners(input.input).then(owners => {
+        stateToChange.owners = owners
+        setSearch(stateToChange)
+      }))
   }
 
   // // useEffect for rerendering input results
-  // useEffect(callsAllAPI(), [input]);
+  useEffect(callsAllAPI, [input]);
+
+  useEffect(() => console.log(search), [search])
 
   const handleLogout = () => {
     props.clearUser();
@@ -69,9 +97,9 @@ const NavBar = (props) => {
           {/* added search */}
           {props.hasUser
             ? <li id="search">
-              <input onChange={handleSearch} type="text" placeholder="Search..." />
+              <input onKeyDown={handleInput} type="text" placeholder="Search..." />
 
-              <Link to="/search"><button>Go!</button></Link>
+              <Link to="/search"><button onClick={callsAllAPI}>Go!</button></Link>
             </li>
             : null}
           {/* end of search */}
