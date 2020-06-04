@@ -5,7 +5,6 @@ import LocationList from './location/LocationList'
 import OwnerList from './owner/OwnerList'
 
 export default function SearchResults(props) {
-
   return (
     <>
       <div>

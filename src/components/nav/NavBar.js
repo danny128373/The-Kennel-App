@@ -19,18 +19,16 @@ const NavBar = (props) => {
   }
 
   const handleInput = (evt) => {
-    console.log(evt.key)
-    const stateToChange = { ...search };
-    stateToChange.input = evt.key;
+    console.log(evt.target.value)
+    const stateToChange = { ...search }
+    stateToChange.input = evt.target.value
+    // stateToChange.input = evt.key;
     setInput(stateToChange);
   }
 
-  // const findMatch = (key) => {
-
-  // }
-
   //fetches from all collections using name_like=input
   const callsAllAPI = () => {
+    props.history.push("/search")
     let stateToChange = { ...search }
     ApiManager.searchAnimals(input.input).then(animals => {
       stateToChange.animals = animals
@@ -97,8 +95,7 @@ const NavBar = (props) => {
           {/* added search */}
           {props.hasUser
             ? <li id="search">
-              <input onKeyDown={handleInput} type="text" placeholder="Search..." />
-
+              <input onKeyUp={handleInput} type="text" placeholder="Search..." />
               <Link to="/search"><button onClick={callsAllAPI}>Go!</button></Link>
             </li>
             : null}
