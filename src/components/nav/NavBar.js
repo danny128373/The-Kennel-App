@@ -7,48 +7,7 @@ import ApiManager from '../../modules/ApiManager'
 
 const NavBar = (props) => {
 
-  // added useState for search
-  const [search, setSearch] = useState({ animals: [], employees: [], locations: [], owners: [] })
-  //added useState for input
-  const [input, setInput] = useState({ input: "" })
 
-  const handleSearch = (evt) => {
-    const stateToChange = { ...search };
-    stateToChange.input = evt.target.value;
-    setSearch(stateToChange);
-  }
-
-  const handleInput = (evt) => {
-    console.log(evt.target.value)
-    const stateToChange = { ...search }
-    stateToChange.input = evt.target.value
-    // stateToChange.input = evt.key;
-    setInput(stateToChange);
-  }
-
-  //fetches from all collections using name_like=input
-  const callsAllAPI = () => {
-    props.history.push("/search")
-    let stateToChange = { ...search }
-    ApiManager.searchAnimals(input.input).then(animals => {
-      stateToChange.animals = animals
-    })
-      .then(ApiManager.searchEmployees(input.input).then(employees => {
-        stateToChange.employees = employees
-      }))
-      .then(ApiManager.searchLocations(input.input).then(locations => {
-        stateToChange.locations = locations
-      }))
-      .then(ApiManager.searchOwners(input.input).then(owners => {
-        stateToChange.owners = owners
-        setSearch(stateToChange)
-      }))
-  }
-
-  // // useEffect for rerendering input results
-  useEffect(callsAllAPI, [input]);
-
-  useEffect(() => console.log(search), [search])
 
   const handleLogout = () => {
     props.clearUser();
@@ -95,8 +54,8 @@ const NavBar = (props) => {
           {/* added search */}
           {props.hasUser
             ? <li id="search">
-              <input onKeyUp={handleInput} type="text" placeholder="Search..." />
-              <Link to="/search"><button onClick={callsAllAPI}>Go!</button></Link>
+              <input onKeyUp={props.handleInput} type="text" placeholder="Search..." />
+              <Link to="/search"><button onClick={props.callsAllAPI}>Go!</button></Link>
             </li>
             : null}
           {/* end of search */}

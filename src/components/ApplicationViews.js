@@ -25,6 +25,8 @@ import SearchResults from "./SearchResults";
 const ApplicationViews = (props) => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
+  const search = props.search
+  const input = props.input
 
   return (
     <>
@@ -148,7 +150,7 @@ const ApplicationViews = (props) => {
       }} />
       <Route path="/search" render={props => {
         if (hasUser) {
-          return <SearchResults {...props} />
+          return <SearchResults {...props} search={search} input={input} />
         } else {
           return <Redirect to="/login" />
         }
