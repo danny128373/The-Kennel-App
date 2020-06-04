@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { withRouter } from 'react-router-dom';
 
 const Login = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -13,7 +12,7 @@ const Login = props => {
   return (
     <form onSubmit={(event) => {
       event.preventDefault()
-      props.setHasUser()
+      props.setHasUser(credentials)
       props.history.push("/")
     }}>
       <fieldset>

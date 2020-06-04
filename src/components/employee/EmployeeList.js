@@ -9,7 +9,7 @@ const EmployeeList = (props) => {
 
   const getEmployees = () => {
     // After the data comes back from the API, we
-    //  use the setAnimals function to update state
+    //  use the setEmployees function to update state
     return ApiManager.getAll('employees').then(employeesFromAPI => {
       setEmployees(employeesFromAPI)
     });
@@ -20,7 +20,7 @@ const EmployeeList = (props) => {
       .then(() => ApiManager.getAll('employees').then(setEmployees));
   };
 
-  // got the animals from the API on the component's first render
+  // got the employees from the API on the component's first render
   useEffect(() => {
     getEmployees();
   }, []);

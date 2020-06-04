@@ -60,6 +60,11 @@
       "name": "East Kennel",
       "address": "123 This Ain't It Rd",
       "id": 2
+    },
+    {
+      "name": "South Kennel",
+      "address": "321 Old Trash Pile Rd",
+      "id": 3
     }
   ],
   "owners": [
