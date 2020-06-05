@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 import "./NavBar.css";
+import ApiManager from '../../modules/ApiManager'
 
-const NavBar = props => {
+const NavBar = (props) => {
+
+
 
   const handleLogout = () => {
     props.clearUser();
@@ -48,6 +51,14 @@ const NavBar = props => {
             : <li>
               <Link className="nav-link" to="/login">Login</Link>
             </li>}
+          {/* added search */}
+          {props.hasUser
+            ? <li id="search">
+              <input onKeyUp={props.handleInput} type="text" placeholder="Search..." />
+              <Link to="/search"><button onClick={props.callsAllAPI}>Go!</button></Link>
+            </li>
+            : null}
+          {/* end of search */}
         </ul>
       </nav>
     </header>

@@ -20,10 +20,13 @@ import OwnerCard from "./owner/OwnerCard"
 import EmployeeCard from "./employee/EmployeeCard"
 import EmployeeEditForm from './employee/EmployeeEditForm'
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
+import SearchResults from "./SearchResults";
 
 const ApplicationViews = (props) => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
+  const search = props.search
+  const input = props.input
 
   return (
     <>
@@ -141,6 +144,13 @@ const ApplicationViews = (props) => {
       <Route exact path="/owner/:ownerId(\d+)" render={props => {
         if (hasUser) {
           return <OwnerCard ownerId={parseInt(props.match.params.ownerId)} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
+      <Route path="/search" render={props => {
+        if (hasUser) {
+          return <SearchResults {...props} search={search} input={input} />
         } else {
           return <Redirect to="/login" />
         }

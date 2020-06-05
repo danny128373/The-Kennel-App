@@ -38,3 +38,13 @@ nav .container li {
 .nav-link:hover {
   color: maroon;
 }
+
+#search {
+  flex: none;
+}
+
+button {
+  border-radius: .5em;
+  margin-left: .2em;
+  background: antiquewhite;
+}

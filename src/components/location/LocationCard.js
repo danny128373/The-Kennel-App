@@ -13,7 +13,6 @@ export default function LocationCard(props) {
           <button>Details</button>
         </Link>
         {
-
           sessionStorage.getItem("credentials") != null && <button type="button" onClick={() => props.deleteLocation(props.location.id)}>Dust this place!</button>
           && <button type="button"
             onClick={() => props.history.push(`/locations/${props.location.id}/edit`)}>
